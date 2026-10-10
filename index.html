@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kashmir Explorer's Itinerary | 12-20 Nov 2026</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        h1, h2, h3, .font-serif-custom {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Glassmorphism Effect */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .glass-card-light {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        /* Snowfall & Chinar Leaf Animation */
+        @keyframes fall {
+            0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(105vh) translateX(50px) rotate(360deg); opacity: 0.2; }
+        }
+        .snowflake {
+            position: fixed;
+            top: -10vh;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 50;
+            animation: fall linear infinite;
+        }
+        .chinar-leaf {
+            position: fixed;
+            top: -10vh;
+            pointer-events: none;
+            z-index: 50;
+            animation: fall linear infinite;
+            font-size: 1.2rem;
+        }
+        /* 3D Card Hover Effects */
+        .card-3d {
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+        }
+        .card-3d:hover {
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 20px 30px -10px rgba(56, 189, 248, 0.3);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #090d16;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #38bdf8;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen relative overflow-x-hidden">
+
+    <!-- Background Mountain Glow & Gradients -->
+    <div class="absolute top-0 left-0 w-full h-[600px] bg-gradient-to-b from-blue-900/30 via-indigo-950/20 to-transparent pointer-events-none z-0"></div>
+    <div class="absolute top-[30%] right-[-10%] w-[500px] h-[500px] bg-sky-600/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
+    <div class="absolute top-[60%] left-[-10%] w-[600px] h-[600px] bg-amber-600/10 rounded-full blur-[150px] pointer-events-none z-0"></div>
+
+    <!-- Falling Snowflakes & Chinar Leaves Container (JS Generated) -->
+    <div id="particles-container"></div>
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-40 glass-card border-b border-slate-800/80 shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-sky-500/30">
+                    <i class="fa-solid fa-mountain-sun text-white text-lg"></i>
+                </div>
+                <div>
+                    <span class="text-xs uppercase tracking-widest text-sky-400 font-semibold">Explorer's Itinerary</span>
+                    <h1 class="text-lg font-bold text-white leading-tight">Kashmir 2026 <span class="text-amber-400">🍂❄️</span></h1>
+                </div>
+            </div>
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-300">
+                <a href="#overview" class="hover:text-sky-400 transition-colors">Overview</a>
+                <a href="#itinerary" class="hover:text-sky-400 transition-colors">9-Day Plan</a>
+                <a href="#highlights" class="hover:text-sky-400 transition-colors">Shikara & Gondola</a>
+                <a href="#hidden" class="hover:text-sky-400 transition-colors">Hidden Gems</a>
+                <a href="#stay-food" class="hover:text-sky-400 transition-colors">Stays & Food</a>
+                <a href="#packing" class="hover:text-sky-400 transition-colors">Packing List</a>
+            </nav>
+            <div>
+                <a href="#itinerary" class="bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white px-5 py-2.5 rounded-xl font-medium text-sm shadow-lg shadow-sky-500/25 transition-all">
+                    View Plan <i class="fa-solid fa-arrow-right ml-1.5"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="overview" class="relative z-10 pt-16 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto">
+            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-300 text-xs font-semibold mb-6 uppercase tracking-wider shadow-inner">
+                <i class="fa-solid fa-calendar-days text-amber-400"></i>
+                <span>12 - 20 November 2026 • Late Autumn & First Snow</span>
+            </div>
+            <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6 font-serif-custom">
+                Valley of Lakes, Chinars & Wooden Shrines <span class="bg-gradient-to-r from-sky-400 to-amber-300 bg-clip-text text-transparent">Kashmir</span>
+            </h1>
+            <p class="text-lg text-slate-300 mb-10 leading-relaxed">
+                A magical 9-day, 8-night expedition crafted for 6 adults[cite: 1, 4]. Experience crisp mountain air, golden Chinar leaves falling on royal Mughal gardens, serene Shikara rides on Dal Lake, and alpine snow at Gulmarg and Sonmarg.
+            </p>
+            
+            <!-- Quick Stats Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-left">
+                <div class="glass-card p-4 rounded-2xl border border-slate-800">
+                    <div class="text-sky-400 text-sm font-semibold mb-1"><i class="fa-solid fa-clock mr-1.5"></i> Duration</div>
+                    <div class="text-xl font-bold text-white">9 Days / 8 Nights</div>
+                    <div class="text-xs text-slate-400">On-the-ground plan[cite: 2]</div>
+                </div>
+                <div class="glass-card p-4 rounded-2xl border border-slate-800">
+                    <div class="text-amber-400 text-sm font-semibold mb-1"><i class="fa-solid fa-users mr-1.5"></i> Group Size</div>
+                    <div class="text-xl font-bold text-white">6 Adults</div>
+                    <div class="text-xs text-slate-400">Tempo Traveller / Innova[cite: 1, 4, 8]</div>
+                </div>
+                <div class="glass-card p-4 rounded-2xl border border-slate-800">
+                    <div class="text-emerald-400 text-sm font-semibold mb-1"><i class="fa-solid fa-route mr-1.5"></i> Bases</div>
+                    <div class="text-xl font-bold text-white">4 Bases</div>
+                    <div class="text-xs text-slate-400">Srinagar, Sonmarg, Doodhpathri, Pahalgam[cite: 15]</div>
+                </div>
+                <div class="glass-card p-4 rounded-2xl border border-slate-800">
+                    <div class="text-rose-400 text-sm font-semibold mb-1"><i class="fa-solid fa-plane-departure mr-1.5"></i> Route</div>
+                    <div class="text-xl font-bold text-white">Ahmedabad → Jammu</div>
+                    <div class="text-xs text-slate-400">Train + Private Cab[cite: 1, 4]</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Highlights: Shikara, Gondola & Chinar Themes -->
+    <section id="highlights" class="relative z-10 py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl font-bold text-white font-serif-custom">Iconic Kashmir Experiences</h2>
+            <p class="text-slate-400 text-sm mt-2">The unforgettable highlights built into your 9-day journey</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Shikara Card -->
+            <div class="glass-card p-6 rounded-3xl card-3d border border-sky-500/20 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-sky-500/10 rounded-full blur-2xl"></div>
+                <div class="w-12 h-12 rounded-2xl bg-sky-500/20 text-sky-400 flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-sailboat"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2">Dal Lake Shikara & Floating Market</h3>
+                <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                    Glide through morning mist on wooden Shikaras from Dal Gate. Witness vendors selling fresh vegetables on traditional woven reed-and-mud radh plots[cite: 4, 5].
+                </p>
+                <div class="flex items-center text-xs text-sky-400 font-semibold">
+                    <span>Day 2 & Houseboat Stays</span> <i class="fa-solid fa-arrow-right ml-1"></i>
+                </div>
+            </div>
+
+            <!-- Gondola Card -->
+            <div class="glass-card p-6 rounded-3xl card-3d border border-indigo-500/20 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl"></div>
+                <div class="w-12 h-12 rounded-2xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-cable-car"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2">Gulmarg Gondola to Apharwat</h3>
+                <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                    Ascend Phase 1 and Phase 2 of the world's renowned cable car for panoramic views of snow-draped Himalayan peaks and alpine meadows[cite: 6].
+                </p>
+                <div class="flex items-center text-xs text-indigo-400 font-semibold">
+                    <span>Day 4 Excursion</span> <i class="fa-solid fa-arrow-right ml-1"></i>
+                </div>
+            </div>
+
+            <!-- Chinar & Mountain Theme Card -->
+            <div class="glass-card p-6 rounded-3xl card-3d border border-amber-500/20 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl"></div>
+                <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-seedling"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2">Golden Chinar Canals & Mughal Gardens</h3>
+                <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                    Stroll through Nishat Bagh and Shalimar Bagh amidst brilliant golden-brown Chinar leaves falling along terraced fountains[cite: 5].
+                </p>
+                <div class="flex items-center text-xs text-amber-400 font-semibold">
+                    <span>Day 2 & Heritage Walks</span> <i class="fa-solid fa-arrow-right ml-1"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Day-by-Day Itinerary Section -->
+    <section id="itinerary" class="relative z-10 py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <span class="text-sky-400 text-xs font-semibold uppercase tracking-widest">Hour by Hour Plan</span>
+            <h2 class="text-3xl sm:text-4xl font-bold text-white font-serif-custom mt-1">9-Day Detailed Itinerary</h2>
+            <p class="text-slate-400 text-sm mt-2">12 November to 20 November 2026 • Optimized for daylight (Sunrise ~6:40 AM, Sunset ~5:05 PM)[cite: 2, 4]</p>
+        </div>
+
+        <!-- Itinerary Accordion / Cards -->
+        <div class="space-y-6">
+            
+            <!-- DAY 1 -->
+            <div class="glass-card rounded-3xl p-6 sm:p-8 border border-slate-800 card-3d">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-800 mb-6 gap-2">
+                    <div class="flex items-center space-x-3">
+                        <span class="bg-sky-500/20 text-sky-400 font-bold px-3.5 py-1.5 rounded-xl text-sm">Day 1</span>
+                        <h3 class="text-xl font-bold text-white">Thu 12 Nov: Jammu → Srinagar + Evening Walk</h3>
+                    </div>
+                    <span class="text-xs bg-indigo-500/20 text-indigo-300 px-3 py-1 rounded-full font-medium w-fit">Stay: Srinagar[cite: 4, 15]</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-300">
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">05:30 am</span>
+                            <p><strong>Jammu Tawi Station:</strong> Meet driver; depart by 6:30 AM sharp to beat tunnel traffic[cite: 4].</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">06:30 am</span>
+                            <p><strong>NH-44 to Udhampur:</strong> Breakfast stop for traditional kulcha-chole at a roadside dhaba[cite: 4].</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">11:30 am</span>
+                            <p><strong>Jawahar & Banihal Tunnels:</strong> Drive through the historic 1956 tunnel and the newer 8.5 km tunnel[cite: 4].</p>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">04:30 pm</span>
+                            <p><strong>Srinagar Check-in:</strong> Settle into your hotel or houseboat and warm up[cite: 4].</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">05:30 pm</span>
+                            <p><strong>Boulevard Road & Lal Chowk:</strong> Evening walk, first cup of piping hot Kahwa, and light shopping[cite: 4].</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DAY 2 -->
+            <div class="glass-card rounded-3xl p-6 sm:p-8 border border-slate-800 card-3d">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-800 mb-6 gap-2">
+                    <div class="flex items-center space-x-3">
+                        <span class="bg-sky-500/20 text-sky-400 font-bold px-3.5 py-1.5 rounded-xl text-sm">Day 2</span>
+                        <h3 class="text-xl font-bold text-white">Fri 13 Nov: Dal Lake Sunrise & Mughal Gardens</h3>
+                    </div>
+                    <span class="text-xs bg-indigo-500/20 text-indigo-300 px-3 py-1 rounded-full font-medium w-fit">Stay: Srinagar[cite: 5, 15]</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-300">
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">05:45 am</span>
+                            <p><strong>Dal Lake Sunrise:</strong> Shikara ride from Dal Gate to floating vegetable market amidst morning mist[cite: 5].</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">08:00 am</span>
+                            <p><strong>Traditional Breakfast:</strong> Sheermal, bakarkhani, and noon chai near Dal Gate[cite: 5].</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">09:30 am</span>
+                            <p><strong>Chashme Shahi:</strong> Visit the tranquil spring-fed terraced garden[cite: 5].</p>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">10:45 am</span>
+                            <p><strong>Nishat & Shalimar Bagh:</strong> Marvel at tall golden Chinar trees and royal Mughal water channels[cite: 5].</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">02:45 pm</span>
+                            <p><strong>Pari Mahal / Zabarwan:</strong> Explore the stunning terraced historic ruin overlooking the valley[cite: 5].</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DAY 3 -->
+            <div class="glass-card rounded-3xl p-6 sm:p-8 border border-slate-800 card-3d">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-800 mb-6 gap-2">
+                    <div class="flex items-center space-x-3">
+                        <span class="bg-sky-500/20 text-sky-400 font-bold px-3.5 py-1.5 rounded-xl text-sm">Day 3</span>
+                        <h3 class="text-xl font-bold text-white">Sat 14 Nov: Srinagar Old City Heritage Walk</h3>
+                    </div>
+                    <span class="text-xs bg-indigo-500/20 text-indigo-300 px-3 py-1 rounded-full font-medium w-fit">Stay: Srinagar[cite: 5, 15]</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-300">
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">07:30 am</span>
+                            <p><strong>Zaina Kadal & Harissa:</strong> Wooden bridge views and traditional winter meat breakfast[cite: 5].</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">08:30 am</span>
+                            <p><strong>Khanqah-e-Moula & Pathar Masjid:</strong> Admire exquisite wooden architecture and rare stone mosque[cite: 3, 5].</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">10:30 am</span>
+                            <p><strong>Jamia Masjid:</strong> Experience the majestic forest of 370+ single deodar trunk pillars[cite: 4, 5].</p>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">11:30 am</span>
+                            <p><strong>Nawa Kadal Craft Lanes:</strong> Watch master woodcarvers and papier-mâché artisans at work[cite: 5].</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">02:15 pm</span>
+                            <p><strong>Hari Parbat Fort & Hazratbal:</strong> Visit the historic hill fort and white marble shrine on Dal Lake[cite: 5].</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DAY 4 -->
+            <div class="glass-card rounded-3xl p-6 sm:p-8 border border-slate-800 card-3d">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-800 mb-6 gap-2">
+                    <div class="flex items-center space-x-3">
+                        <span class="bg-sky-500/20 text-sky-400 font-bold px-3.5 py-1.5 rounded-xl text-sm">Day 4</span>
+                        <h3 class="text-xl font-bold text-white">Sun 15 Nov: Gulmarg Excursion (Snow & Gondola)</h3>
+                    </div>
+                    <span class="text-xs bg-indigo-500/20 text-indigo-300 px-3 py-1 rounded-full font-medium w-fit">Stay: Srinagar[cite: 6, 15]</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-300">
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">06:45 am</span>
+                            <p><strong>Depart Srinagar:</strong> Drive 50 km towards Tangmarg with breakfast en route[cite: 6].</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">09:30 am</span>
+                            <p><strong>Gulmarg Gondola:</strong> Ride Phase 1 and Phase 2 up to Apharwat peak for high-altitude snow views[cite: 6].</p>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">02:00 pm</span>
+                            <p><strong>St. Mary’s Church & Meadows:</strong> Explore the colonial-era church and vast meadow golf course[cite: 6].</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">03:15 pm</span>
+                            <p><strong>Return to Srinagar:</strong> Drive back before mountain darkness sets in[cite: 6].</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DAY 5 -->
+            <div class="glass-card rounded-3xl p-6 sm:p-8 border border-slate-800 card-3d">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-800 mb-6 gap-2">
+                    <div class="flex items-center space-x-3">
+                        <span class="bg-sky-500/20 text-sky-400 font-bold px-3.5 py-1.5 rounded-xl text-sm">Day 5</span>
+                        <h3 class="text-xl font-bold text-white">Mon 16 Nov: Srinagar → Manasbal → Sonmarg</h3>
+                    </div>
+                    <span class="text-xs bg-emerald-500/20 text-emerald-300 px-3 py-1 rounded-full font-medium w-fit">Stay: Sonmarg[cite: 6, 15]</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-300">
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">07:30 am</span>
+                            <p><strong>Manasbal Lake:</strong> Morning visit to the deepest and calmest lake in the valley[cite: 6, 9].</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">09:15 am</span>
+                            <p><strong>Naranag Temples (Optional):</strong> Explore 8th-century Karkota dynasty shrines in a pine valley[cite: 6, 9].</p>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">01:30 pm</span>
+                            <p><strong>Thajiwas Glacier Valley:</strong> Scenic meadow walk along the Sindh River against snow peaks[cite: 6].</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">Evening</span>
+                            <p><strong>Sonmarg Stay:</strong> Enjoy a very cold alpine night with warm heating[cite: 6].</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DAY 6 -->
+            <div class="glass-card rounded-3xl p-6 sm:p-8 border border-slate-800 card-3d">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-800 mb-6 gap-2">
+                    <div class="flex items-center space-x-3">
+                        <span class="bg-sky-500/20 text-sky-400 font-bold px-3.5 py-1.5 rounded-xl text-sm">Day 6</span>
+                        <h3 class="text-xl font-bold text-white">Tue 17 Nov: Sonmarg Sunrise → Doodhpathri</h3>
+                    </div>
+                    <span class="text-xs bg-emerald-500/20 text-emerald-300 px-3 py-1 rounded-full font-medium w-fit">Stay: Doodhpathri[cite: 7, 15]</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-300">
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">06:45 am</span>
+                            <p><strong>Sonmarg Sunrise:</strong> Catch pristine morning light hitting the Sindh River and snow peaks[cite: 7].</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">09:30 am</span>
+                            <p><strong>Drive to Srinagar:</strong> Travel via Kangan and Ganderbal towards Budgam[cite: 7].</p>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">04:00 pm</span>
+                            <p><strong>Doodhpathri Meadow Walk:</strong> Explore pine forests and the pristine stream during golden hour[cite: 7].</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DAY 7 -->
+            <div class="glass-card rounded-3xl p-6 sm:p-8 border border-slate-800 card-3d">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-800 mb-6 gap-2">
+                    <div class="flex items-center space-x-3">
+                        <span class="bg-sky-500/20 text-sky-400 font-bold px-3.5 py-1.5 rounded-xl text-sm">Day 7</span>
+                        <h3 class="text-xl font-bold text-white">Wed 18 Nov: Doodhpathri → Pampore → Pahalgam</h3>
+                    </div>
+                    <span class="text-xs bg-amber-500/20 text-amber-300 px-3 py-1 rounded-full font-medium w-fit">Stay: Pahalgam[cite: 7, 15]</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-300">
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">06:45 am</span>
+                            <p><strong>Doodhpathri Morning Walk:</strong> Frosty pine trees, stream views, and crisp mountain air[cite: 7].</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">11:30 am</span>
+                            <p><strong>Pampore Saffron Shops:</strong> Purchase authentic GI-tagged saffron from trusted local shops[cite: 7, 10].</p>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">12:30 pm</span>
+                            <p><strong>Awantipora Temple Ruins:</strong> Discover 9th-century ancient stone temple remnants[cite: 7].</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">04:45 pm</span>
+                            <p><strong>Pahalgam Lidder River:</strong> Check in and enjoy a relaxing evening walk by the rushing river[cite: 7].</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DAY 8 -->
+            <div class="glass-card rounded-3xl p-6 sm:p-8 border border-slate-800 card-3d">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-800 mb-6 gap-2">
+                    <div class="flex items-center space-x-3">
+                        <span class="bg-sky-500/20 text-sky-400 font-bold px-3.5 py-1.5 rounded-xl text-sm">Day 8</span>
+                        <h3 class="text-xl font-bold text-white">Thu 19 Nov: Pahalgam Valleys (Betaab, Aru, Chandanwari)</h3>
+                    </div>
+                    <span class="text-xs bg-amber-500/20 text-amber-300 px-3 py-1 rounded-full font-medium w-fit">Stay: Pahalgam[cite: 8, 15]</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-300">
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">06:30 am</span>
+                            <p><strong>Lidder River Sunrise:</strong> Mist over the river water with gorgeous long-exposure photo ops[cite: 8].</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">09:00 am</span>
+                            <p><strong>Betaab & Aru Valleys:</strong> Explore breathtaking mountain valleys by union cab[cite: 8].</p>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">02:30 pm</span>
+                            <p><strong>Mamleshwar Temple & Market:</strong> Visit the ancient Shiva shrine by the river and shop for walnuts & dry fruits[cite: 8].</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DAY 9 -->
+            <div class="glass-card rounded-3xl p-6 sm:p-8 border border-slate-800 card-3d">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-800 mb-6 gap-2">
+                    <div class="flex items-center space-x-3">
+                        <span class="bg-sky-500/20 text-sky-400 font-bold px-3.5 py-1.5 rounded-xl text-sm">Day 9</span>
+                        <h3 class="text-xl font-bold text-white">Fri 20 Nov: Pahalgam → Martand Sun Temple → Jammu</h3>
+                    </div>
+                    <span class="text-xs bg-rose-500/20 text-rose-300 px-3 py-1 rounded-full font-medium w-fit">Train Home[cite: 8, 15]</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-300">
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">06:00 am</span>
+                            <p><strong>Depart Pahalgam:</strong> Early departure with packed breakfast[cite: 8].</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">07:15 am</span>
+                            <p><strong>Martand Sun Temple:</strong> Marvel at the 8th-century colonnaded stone ruins in morning light[cite: 8].</p>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3">
+                            <span class="text-sky-400 font-mono font-bold">04:30 pm</span>
+                            <p><strong>Arrive Jammu Tawi:</strong> Board your return train home after 8:00 PM[cite: 8].</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Hidden Gems & Unexplored Places -->
+    <section id="hidden" class="relative z-10 py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <span class="text-sky-400 text-xs font-semibold uppercase tracking-widest">Off-the-Beaten-Path</span>
+            <h2 class="text-3xl font-bold text-white font-serif-custom mt-1">Hidden & Unexplored Wonders</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="glass-card p-6 rounded-3xl border border-slate-800">
+                <div class="text-sky-400 font-bold text-sm mb-1">Srinagar</div>
+                <h3 class="text-lg font-bold text-white mb-2">Pandrethan Temple</h3>
+                <p class="text-slate-300 text-sm">8th-9th century stone Shiva temple exquisitely built right in the middle of a calm pond[cite: 9].</p>
+            </div>
+            <div class="glass-card p-6 rounded-3xl border border-slate-800">
+                <div class="text-sky-400 font-bold text-sm mb-1">Ganderbal</div>
+                <h3 class="text-lg font-bold text-white mb-2">Manasbal Lake & Jarokha Bagh</h3>
+                <p class="text-slate-300 text-sm">The deepest and calmest lake in Kashmir, famous for serene morning light and Nur Jahan's garden[cite: 9].</p>
+            </div>
+            <div class="glass-card p-6 rounded-3xl border border-slate-800">
+                <div class="text-sky-400 font-bold text-sm mb-1">Anantnag</div>
+                <h3 class="text-lg font-bold text-white mb-2">Verinag Spring</h3>
+                <p class="text-slate-300 text-sm">Mughal-built octagonal stone tank serving as the crystal-clear pristine source of the Jhelum River[cite: 9].</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stay & Food Section -->
+    <section id="stay-food" class="relative z-10 py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <span class="text-sky-400 text-xs font-semibold uppercase tracking-widest">Hospitality & Cuisine</span>
+            <h2 class="text-3xl font-bold text-white font-serif-custom mt-1">Stays & Local Delicacies</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Stays -->
+            <div class="glass-card p-8 rounded-3xl border border-slate-800">
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                    <i class="fa-solid fa-hotel text-sky-400 mr-3"></i> Recommended Houseboat & Stays
+                </h3>
+                <ul class="space-y-4 text-sm text-slate-300">
+                    <li class="p-4 rounded-2xl bg-sky-500/10 border border-sky-500/20">
+                        <strong class="text-white block mb-1">Persian Palace Group of Houseboats (Top Pick)</strong>
+                        Featured carved-wood rooms, homemade vegetarian-friendly meals on board, and warm family hosts for your 4 Srinagar nights[cite: 12].
+                    </li>
+                    <li class="p-4 rounded-2xl bg-slate-900/60 border border-slate-800">
+                        <strong class="text-white block mb-1">Sonmarg, Doodhpathri & Pahalgam Stays</strong>
+                        Riverside alpine resorts and verified heated chalets. Always confirm room heaters, bukharis, and hot water in writing for November temperatures (0°C to 3°C)[cite: 12, 13].
+                    </li>
+                </ul>
+            </div>
+            <!-- Food -->
+            <div class="glass-card p-8 rounded-3xl border border-slate-800">
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                    <i class="fa-solid fa-utensils text-amber-400 mr-3"></i> Must-Try Kashmiri Cuisine
+                </h3>
+                <div class="grid grid-cols-2 gap-3 text-sm">
+                    <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                        <strong class="text-white block">Kahwa</strong>
+                        <span class="text-xs text-slate-400">Saffron-almond green tea</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                        <strong class="text-white block">Noon Chai</strong>
+                        <span class="text-xs text-slate-400">Traditional pink salt tea</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                        <strong class="text-white block">Nadru Monje</strong>
+                        <span class="text-xs text-slate-400">Crispy lotus-stem fritters</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                        <strong class="text-white block">Wazwan</strong>
+                        <span class="text-xs text-slate-400">Rogan josh, Gushtaba, Tabak maaz</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packing Checklist Section -->
+    <section id="packing" class="relative z-10 py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="glass-card p-8 sm:p-10 rounded-3xl border border-sky-500/20">
+            <div class="text-center mb-8">
+                <span class="text-sky-400 text-xs font-semibold uppercase tracking-widest">Be Prepared</span>
+                <h2 class="text-3xl font-bold text-white font-serif-custom mt-1">Interactive Packing Checklist</h2>
+                <p class="text-slate-400 text-sm mt-2">Check off items as you pack for your mid-November Kashmir journey</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-slate-300">
+                <label class="flex items-center space-x-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 cursor-pointer hover:border-sky-500/50 transition-colors">
+                    <input type="checkbox" class="w-5 h-5 rounded accent-sky-500 bg-slate-800 border-slate-700">
+                    <span>Government ID (Originals + Copies)[cite: 15]</span>
+                </label>
+                <label class="flex items-center space-x-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 cursor-pointer hover:border-sky-500/50 transition-colors">
+                    <input type="checkbox" class="w-5 h-5 rounded accent-sky-500 bg-slate-800 border-slate-700">
+                    <span>Train Tickets & Hotel Vouchers[cite: 15]</span>
+                </label>
+                <label class="flex items-center space-x-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 cursor-pointer hover:border-sky-500/50 transition-colors">
+                    <input type="checkbox" class="w-5 h-5 rounded accent-sky-500 bg-slate-800 border-slate-700">
+                    <span>Thermals (2 sets), fleece, down jacket[cite: 15]</span>
+                </label>
+                <label class="flex items-center space-x-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 cursor-pointer hover:border-sky-500/50 transition-colors">
+                    <input type="checkbox" class="w-5 h-5 rounded accent-sky-500 bg-slate-800 border-slate-700">
+                    <span>Waterproof boots, woolen cap, gloves[cite: 15]</span>
+                </label>
+                <label class="flex items-center space-x-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 cursor-pointer hover:border-sky-500/50 transition-colors">
+                    <input type="checkbox" class="w-5 h-5 rounded accent-sky-500 bg-slate-800 border-slate-700">
+                    <span>Postpaid Mobile SIM card (Prepaid out-of-state SIMs don't work)[cite: 13, 15]</span>
+                </label>
+                <label class="flex items-center space-x-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 cursor-pointer hover:border-sky-500/50 transition-colors">
+                    <input type="checkbox" class="w-5 h-5 rounded accent-sky-500 bg-slate-800 border-slate-700">
+                    <span>Sunglasses, sunscreen, lip balm, moisturizer[cite: 15]</span>
+                </label>
+                <label class="flex items-center space-x-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 cursor-pointer hover:border-sky-500/50 transition-colors">
+                    <input type="checkbox" class="w-5 h-5 rounded accent-sky-500 bg-slate-800 border-slate-700">
+                    <span>Power bank & extra batteries (cold drains them)[cite: 15]</span>
+                </label>
+                <label class="flex items-center space-x-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 cursor-pointer hover:border-sky-500/50 transition-colors">
+                    <input type="checkbox" class="w-5 h-5 rounded accent-sky-500 bg-slate-800 border-slate-700">
+                    <span>Basic medicines, ORS, motion-sickness tablets[cite: 15]</span>
+                </label>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative z-10 bg-slate-900 border-t border-slate-800 text-center py-8 text-sm text-slate-400">
+        <p>Kashmir Explorer Itinerary (12-20 Nov 2026) • Designed for 6 Adults <span class="text-sky-400">❄️🍂</span></p>
+        <p class="text-xs text-slate-500 mt-1">Verify local road status, weather forecasts, and timings before departure[cite: 2].</p>
+    </footer>
+
+    <!-- Snowflakes & Chinar Leaves Generator Script -->
+    <script>
+        const container = document.getElementById('particles-container');
+        const numSnowflakes = 35;
+        const numLeaves = 15;
+
+        // Generate Snowflakes
+        for (let i = 0; i < numSnowflakes; i++) {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            const size = Math.random() * 6 + 3 + 'px';
+            snowflake.style.width = size;
+            snowflake.style.height = size;
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = (Math.random() * 8 + 6) + 's';
+            snowflake.style.animationDelay = (Math.random() * 5) + 's';
+            snowflake.style.opacity = Math.random() * 0.7 + 0.3;
+            container.appendChild(snowflake);
+        }
+
+        // Generate Chinar Leaves
+        const leafSymbols = ['🍁', '🍂'];
+        for (let i = 0; i < numLeaves; i++) {
+            const leaf = document.createElement('div');
+            leaf.classList.add('chinar-leaf');
+            leaf.innerText = leafSymbols[Math.floor(Math.random() * leafSymbols.length)];
+            leaf.style.left = Math.random() * 100 + 'vw';
+            leaf.style.animationDuration = (Math.random() * 10 + 8) + 's';
+            leaf.style.animationDelay = (Math.random() * 8) + 's';
+            leaf.style.fontSize = (Math.random() * 10 + 14) + 'px';
+            container.appendChild(leaf);
+        }
+    </script>
+</body>
+</html>
